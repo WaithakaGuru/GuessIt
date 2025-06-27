@@ -35,17 +35,14 @@ export function guessReducer(previousGuessState: GuessState, action: ReducerActi
         case "CHECK_GUESS": 
             if(previousGuessState.trials > 1){
                 if(action.payload === previousGuessState.secretNumber) 
-                    return {...previousGuessState, playGameOn: false, userGuess: null,
+                    return {...previousGuessState, playGameOn: false,
                     gameStatus: `Victory🏆: Your score is ${previousGuessState.trials * 10} %`}
                 if(action.payload! <  previousGuessState.secretNumber)
                 return {...previousGuessState, trials: previousGuessState.trials - 1,
-                    userGuess: null,
                     gameStatus:`${action.payload} is less than the secret number`}
                 else return {...previousGuessState, trials: previousGuessState.trials - 1,
-                    userGuess: null,
                     gameStatus: `${action.payload} is greater than the secret number`}
             }else return {...previousGuessState, playGameOn: false,
-                 userGuess: null,
                  gameStatus: `Failure😓: You ran out of Trials. Secret Number was: ${ previousGuessState.secretNumber}`
                 }
     }
