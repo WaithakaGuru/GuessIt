@@ -1,11 +1,147 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  position: relative;
+  color: #0770a8;
+  border-radius: .5rem;
+}
+
+html{
+  font-size: 10px;
+}
+
+body{
+  box-sizing: border-box;
+  background-color: #f1f1f2;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#root{
+  width: 85%;
+  max-width: 700px;
+  border: 2px solid slategray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 3rem;
+  background-color: #fff;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  box-shadow: 1px 1px .5rem rgba(0,0,0, .1), -1px -1px 1.5rem white;
+  padding: 1rem 0;
+}
+
+header p{
+  margin: 0;
+  padding: 1rem 0;
+}
+
+header .logo{
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #a80795;
+  margin-inline: 2rem
+}
+
+button.new-game{
+  padding: 1rem 3rem;
+  height: fit-content;
+  margin: 2rem;
+}
+
+button{
+  padding: 1rem 2rem;
+  font-size: 1.7rem;
+  border: none;
+  border-radius: .7rem;
+  background-color: rgb(187, 233, 247);
+  color: darkslategray; 
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .4s, scale .4s, color .4s;
+}
+
+button:hover{
+  background-color: rgb(207, 239, 249);
+}
+
+button:active{
+  scale: .9;
+}
+
+button:disabled {
+  opacity: .5;
+}
+
+button.guess-btn{
+  font-size: 1.9rem;
+  padding: 1.5rem 4rem;
+  width: 60%;
+  margin-left: -22%;
+}
+
+.game-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-container > p{width: 80%}
+
+.game-container > p{
+  font-size: 1.8rem;
+  color: rgb(13, 97, 122);
+  border: .1rem solid rgb(13, 97, 122);
+  padding: 1rem;
+  font-weight: 500;
+  background-color: rgb(235, 253, 255);
+  text-align: center
+}
+
+.game-container > p.trials{
+  background-color: rgb(235, 255, 235);
+  color: rgb(13, 122, 40);
+  border: .1rem solid rgb(13, 122, 20);
+}
+.game-container > p.no-trials{
+   background-color: rgb(255, 235, 235);
+  color: rgb(122, 13, 13);
+  border: .1rem solid rgb(122, 13, 13);
+}
+
+.game-container input.guess-input{
+  width: 55%;
+  padding: 1rem 2rem;
+  font-size: 2.5rem;
+  outline: none;
+  border-radius: .5rem;
+  border: 2px solid rgb(20, 120, 151);;
+  color: rgb(5, 121, 164);
+  margin-left: -22%;
+}
+
+.game-container input.guess-input::placeholder{
+  color:  rgb(20, 120, 151);
+  font-size: 1.8rem;
+}

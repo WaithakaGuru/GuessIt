@@ -33,14 +33,18 @@ export default function GuessGameUI () {
                 >New Game</button>
             </header>
             <div className="game-container">
-                <p>{currentGuessState.trials} Trials Remaining</p>
+                {currentGuessState.playGameOn?   <p
+                 className={currentGuessState.trials ===0 ? "no-trials" : "trials"}>
+                    {currentGuessState.trials} Trials Remaining</p> :
+                <p className="game-instruction">Guess a number between 0 to 100 (click 'New Game' to play)</p>
+                }
                 <input type="number" 
                 className="guess-input" 
                 placeholder="Enter your guess number"
-                value={currentGuessState.userGuess|| 0}
                 onChange={handleGuessInput}
                 />
-                <p className="game-status">{currentGuessState.gameStatus}</p>
+                <p className={currentGuessState.trials===1? "no-trials" : "trials"}>
+                {currentGuessState.gameStatus}</p>
                 <button className="guess-btn"
                 disabled={!currentGuessState.playGameOn}
                 onClick={()=>handleUserGuess(currentGuessState)}
