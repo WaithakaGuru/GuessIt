@@ -1,10 +1,8 @@
-import GuessGameUI from './components/game'
-import './guess.css'
+import GuessGameUI from "./components/game";
+import "./guess.css";
 
 function Guess() {
-  return (
-    <GuessGameUI/>
-  )
+  return <GuessGameUI />;
 }
 
-export default Guess
+export default Guess;
