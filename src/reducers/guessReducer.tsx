@@ -1,4 +1,4 @@
-import generateRandomValue from "./utils/random";
+import generateRandomValue from "../utils/random";
 
 export type GuessState = {
   trials: number;

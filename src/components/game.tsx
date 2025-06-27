@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { guessReducer, initalState } from "../guessReducer";
+import { guessReducer, initalState } from "../reducers/guessReducer";
 import { GiThink } from "react-icons/gi";
 
 type GuessState = {
