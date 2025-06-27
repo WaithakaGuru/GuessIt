@@ -1,7 +1,6 @@
-import React, { useReducer } from "react";
 import generateRandomValue from "./utils/random"
 
-type GuessState = {
+export type GuessState = {
     trials: number,
     userGuess: number | null,
     gameStatus: string,
@@ -15,23 +14,11 @@ type ReducerAction = {
 
 const SecretGuessNumber =  generateRandomValue();
 
-const initalState: GuessState = {
+export const initalState: GuessState = {
     trials: 10, userGuess: null, gameStatus: "", playGameOn: false
 }
 
-export function handleGuessInput(e: React.ChangeEvent<HTMLInputElement> ){
-   dispatch({type:"UPDATE_GUESS", payload: Number(e.target.value)})
-}
-
-export function handleUserGuess(currentGuessState: GuessState) {
-    dispatch({type:"CHECK_GUESS", payload: currentGuessState.userGuess})
-}
-
-export function handleNewGameBtn() {
-    dispatch({type: "START_NEW_GAME"})
-}
-
-function guessReducer(previousGuessState: GuessState, action: ReducerAction) : GuessState {
+export function guessReducer(previousGuessState: GuessState, action: ReducerAction) : GuessState {
     switch(action.type) {
         case "START_NEW_GAME":
             return {...previousGuessState, playGameOn: true,
@@ -41,6 +28,7 @@ function guessReducer(previousGuessState: GuessState, action: ReducerAction) : G
         case "UPDATE_GUESS":
             if(action.payload)
             return{...previousGuessState, userGuess: action.payload}
+        break;
 
         case "CHECK_GUESS": 
             if(previousGuessState.trials > 0){
@@ -58,6 +46,3 @@ function guessReducer(previousGuessState: GuessState, action: ReducerAction) : G
     }
     return previousGuessState
 }
-
-export const [currentGuessState, dispatch] = useReducer(guessReducer, initalState);
-
