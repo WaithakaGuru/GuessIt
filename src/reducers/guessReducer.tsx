@@ -52,12 +52,14 @@ export function guessReducer(
         if (action.payload! < previousGuessState.secretNumber)
           return {
             ...previousGuessState,
+            win: false,
             trials: previousGuessState.trials - 1,
             gameStatus: `${action.payload} is less than the secret number`,
           };
         else
           return {
             ...previousGuessState,
+            win: false,
             trials: previousGuessState.trials - 1,
             gameStatus: `${action.payload} is greater than the secret number`,
           };
