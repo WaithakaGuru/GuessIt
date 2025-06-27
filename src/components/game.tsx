@@ -55,7 +55,7 @@ export default function GuessGameUI() {
       <div className="game-container">
         {currentGuessState.playGameOn ? (
           <p
-            className={currentGuessState.trials === 0 ? "no-trials" : "trials"}
+            className={currentGuessState.trials === 0 ? "no-trials" : ""}
           >
             {currentGuessState.trials} Trials Remaining
           </p>
@@ -72,7 +72,7 @@ export default function GuessGameUI() {
           placeholder="Enter your guess number"
           onChange={handleGuessInput}
         />
-        <p className={currentGuessState.trials <= 1 ? "no-trials" : "trials"}>
+        <p className={currentGuessState.win ?"trials"  : "no-trials"}>
           {currentGuessState.gameStatus}
         </p>
         <button
