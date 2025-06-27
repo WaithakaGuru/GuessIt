@@ -2,7 +2,7 @@ import generateRandomValue from "./utils/random"
 
 export type GuessState = {
     trials: number,
-    userGuess: string | null| number,
+    userGuess: string | number | "",
     gameStatus: string,
     secretNumber: number
     playGameOn: boolean
@@ -10,7 +10,7 @@ export type GuessState = {
 
 type ReducerAction = {
     type: string,
-    payload?: number | null 
+    payload?: any
 }
 
 
@@ -23,14 +23,12 @@ export function guessReducer(previousGuessState: GuessState, action: ReducerActi
     switch(action.type) {
         case "START_NEW_GAME":
             return {...previousGuessState, playGameOn: true, 
-                secretNumber: generateRandomValue(), trials: 10, userGuess: null,
+                secretNumber: generateRandomValue(), trials: 10, userGuess:"",
                 gameStatus: "Secret Number generated!! Enter you guess to play🫡"
             }
 
         case "UPDATE_GUESS":
-            if(action.payload)
             return{...previousGuessState, userGuess: action.payload}
-        break;
 
         case "CHECK_GUESS": 
             if(previousGuessState.trials > 1){

@@ -3,22 +3,31 @@ import { guessReducer, initalState } from "../guessReducer";
 
 type GuessState = {
     trials: number,
-    userGuess: string | number | null,
+    userGuess: string | number | "",
     gameStatus: string,
     playGameOn: boolean
 }
 
 export default function GuessGameUI () {
 
-    function handleGuessInput(e: React.ChangeEvent<HTMLInputElement> ){
-        dispatch({type:"UPDATE_GUESS", payload: Number(e.target.value)})
+   function handleUserGuess(currentGuessState: GuessState) {
+        const rawGuess = currentGuessState.userGuess;
+
+        const guess = rawGuess === ""? "" : rawGuess === null
+            ? null
+            : typeof rawGuess === "string"
+            ? Number(rawGuess)
+            : rawGuess;
+
+        dispatch({ type: "CHECK_GUESS", payload: guess });
     }
-    function handleUserGuess(currentGuessState: GuessState) {
-        const guess = typeof currentGuessState.userGuess === "string"
-            ? Number(currentGuessState.userGuess)
-            : currentGuessState.userGuess;
-        dispatch({type:"CHECK_GUESS", payload: guess})
-    }
+
+    function handleGuessInput(e: React.ChangeEvent<HTMLInputElement>) {
+        dispatch({
+            type: "UPDATE_GUESS",
+            payload: e.target.value
+        });
+    }   
     
     function handleNewGameBtn() {
         dispatch({type: "START_NEW_GAME"})
@@ -41,11 +50,14 @@ export default function GuessGameUI () {
                     {currentGuessState.trials} Trials Remaining</p> :
                 <p className="game-instruction">Guess a number between 0 to 100 (click 'New Game' to play)</p>
                 }
-                <input type="number" 
-                className="guess-input" 
-                value={currentGuessState.userGuess=== null || currentGuessState.userGuess === undefined? "":currentGuessState.userGuess }
-                placeholder="Enter your guess number"
-                onChange={handleGuessInput}
+                <input
+                    type="number"
+                    className="guess-input"
+                    value={
+                        currentGuessState.userGuess
+                    }
+                    placeholder="Enter your guess number"
+                    onChange={handleGuessInput}
                 />
                 <p className={currentGuessState.trials<=1? "no-trials" : "trials"}>
                 {currentGuessState.gameStatus}</p>
