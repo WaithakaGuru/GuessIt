@@ -33,7 +33,7 @@ export function guessReducer(
         secretNumber: generateRandomValue(),
         trials: 10,
         userGuess: "",
-        gameStatus: "Secret Number generated!! Enter you guess to play🫡",
+        gameStatus: "Secret Number generated!! Enter your guess to play🫡",
       };
 
     case "UPDATE_GUESS":
@@ -45,7 +45,7 @@ export function guessReducer(
           return {
             ...previousGuessState,
             playGameOn: false,
-            gameStatus: `Victory🏆: Your score is ${previousGuessState.trials * 10} %`,
+            gameStatus: `Victory🏆: Your score is ${previousGuessState.trials * 10}%`,
           };
         if (action.payload! < previousGuessState.secretNumber)
           return {
