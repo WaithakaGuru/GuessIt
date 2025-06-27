@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { guessReducer, initalState } from "../guessReducer";
+import { GiThink } from "react-icons/gi";
 
 type GuessState = {
   trials: number;
@@ -41,7 +42,7 @@ export default function GuessGameUI() {
     <>
       <header>
         <p className="game-header">
-          <span className="logo">GuessIt</span> Number Guessing Game
+          <span className="logo"> {<GiThink className="logo-icon"/>}  GuessIt</span> Number Guessing Game
         </p>
         <button
           className="new-game"
@@ -65,6 +66,7 @@ export default function GuessGameUI() {
         )}
         <input
           type="number"
+          required
           className="guess-input"
           value={currentGuessState.userGuess}
           placeholder="Enter your guess number"
@@ -74,6 +76,7 @@ export default function GuessGameUI() {
           {currentGuessState.gameStatus}
         </p>
         <button
+          type="submit"
           className="guess-btn"
           disabled={!currentGuessState.playGameOn}
           onClick={() => handleUserGuess(currentGuessState)}

@@ -40,7 +40,7 @@ export function guessReducer(
       return { ...previousGuessState, userGuess: action.payload };
 
     case "CHECK_GUESS":
-      if (previousGuessState.trials > 1) {
+      if (previousGuessState.trials >= 1) {
         if (action.payload === previousGuessState.secretNumber)
           return {
             ...previousGuessState,

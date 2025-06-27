@@ -67,7 +67,11 @@ header p.game-header{
 header .logo {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #a80795;
+  /* color: #075aa8; */
+}
+
+header .logo-icon{
+  font-size: 4rem;
 }
 
 button.new-game {
@@ -82,7 +86,7 @@ button {
   border: none;
   border-radius: 0.7rem;
   background-color: rgb(187, 233, 247);
-  color: darkslategray;
+  color: #07689c;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -107,35 +111,37 @@ button.guess-btn {
   font-size: 1.9rem;
   padding: 1.5rem 4rem;
   width: 60%;
-  margin-left: -22%;
 }
 
 .game-container {
-  width: 100%;
+  min-width: 90%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+  margin: 1rem auto;
 }
 
 .game-container > p {
-  width: 80%;
+  min-width: 90%;
+  max-width: max-content;
 }
 
 .game-container > p {
   font-size: 1.8rem;
   color: rgb(13, 97, 122);
   border: 0.1rem solid rgb(13, 97, 122);
-  padding: 1rem;
+  padding: 1rem .5rem;
   font-weight: 500;
   background-color: rgb(235, 253, 255);
   text-align: center;
 }
 
-.game-container > p.trials {
+/* .game-container > p.trials {
   background-color: rgb(235, 255, 235);
   color: rgb(13, 122, 40);
   border: 0.1rem solid rgb(13, 122, 20);
-}
+} */
 .game-container > p.no-trials {
   background-color: rgb(255, 235, 235);
   color: rgb(122, 13, 13);
@@ -150,7 +156,6 @@ button.guess-btn {
   border-radius: 0.5rem;
   border: 2px solid rgb(20, 120, 151);
   color: rgb(5, 121, 164);
-  margin-left: -22%;
 }
 
 .game-container input.guess-input::placeholder {
