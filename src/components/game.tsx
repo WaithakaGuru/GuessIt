@@ -3,7 +3,7 @@ import { guessReducer, initalState } from "../guessReducer";
 
 type GuessState = {
     trials: number,
-    userGuess: number | null,
+    userGuess: string | number | null,
     gameStatus: string,
     playGameOn: boolean
 }
@@ -13,8 +13,11 @@ export default function GuessGameUI () {
     function handleGuessInput(e: React.ChangeEvent<HTMLInputElement> ){
         dispatch({type:"UPDATE_GUESS", payload: Number(e.target.value)})
     }
-        function handleUserGuess(currentGuessState: GuessState) {
-        dispatch({type:"CHECK_GUESS", payload: currentGuessState.userGuess})
+    function handleUserGuess(currentGuessState: GuessState) {
+        const guess = typeof currentGuessState.userGuess === "string"
+            ? Number(currentGuessState.userGuess)
+            : currentGuessState.userGuess;
+        dispatch({type:"CHECK_GUESS", payload: guess})
     }
     
     function handleNewGameBtn() {
@@ -40,6 +43,7 @@ export default function GuessGameUI () {
                 }
                 <input type="number" 
                 className="guess-input" 
+                value={currentGuessState.userGuess=== null || currentGuessState.userGuess === undefined? "":currentGuessState.userGuess }
                 placeholder="Enter your guess number"
                 onChange={handleGuessInput}
                 />

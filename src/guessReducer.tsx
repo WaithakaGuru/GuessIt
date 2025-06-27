@@ -2,7 +2,7 @@ import generateRandomValue from "./utils/random"
 
 export type GuessState = {
     trials: number,
-    userGuess: number | null,
+    userGuess: string | null| number,
     gameStatus: string,
     secretNumber: number
     playGameOn: boolean
@@ -15,7 +15,7 @@ type ReducerAction = {
 
 
 export const initalState: GuessState = {
-    trials: 10, userGuess: null, secretNumber: 0,
+    trials: 10, userGuess: "", secretNumber: 0,
     gameStatus: "", playGameOn: false
 }
 
@@ -23,7 +23,7 @@ export function guessReducer(previousGuessState: GuessState, action: ReducerActi
     switch(action.type) {
         case "START_NEW_GAME":
             return {...previousGuessState, playGameOn: true, 
-                secretNumber: generateRandomValue(), trials: 10,
+                secretNumber: generateRandomValue(), trials: 10, userGuess: null,
                 gameStatus: "Secret Number generated!! Enter you guess to play🫡"
             }
 
@@ -43,6 +43,7 @@ export function guessReducer(previousGuessState: GuessState, action: ReducerActi
                 else return {...previousGuessState, trials: previousGuessState.trials - 1,
                     gameStatus: `${action.payload} is greater than the secret number`}
             }else return {...previousGuessState, playGameOn: false,
+                 userGuess: "",
                  gameStatus: `Failure😓: You ran out of Trials. Secret Number was: ${ previousGuessState.secretNumber}`
                 }
     }
