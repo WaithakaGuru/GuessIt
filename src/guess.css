@@ -58,7 +58,7 @@ header p {
   padding: 1rem 0;
 }
 
-header p.game-header{
+header p.game-header {
   display: flex;
   flex-direction: column;
   margin-inline: 2rem;
@@ -70,7 +70,7 @@ header .logo {
   /* color: #075aa8; */
 }
 
-header .logo-icon{
+header .logo-icon {
   font-size: 4rem;
 }
 
@@ -131,7 +131,7 @@ button.guess-btn {
   font-size: 1.8rem;
   color: rgb(13, 97, 122);
   border: 0.1rem solid rgb(13, 97, 122);
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   font-weight: 500;
   background-color: rgb(235, 253, 255);
   text-align: center;

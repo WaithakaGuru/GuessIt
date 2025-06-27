@@ -42,7 +42,11 @@ export default function GuessGameUI() {
     <>
       <header>
         <p className="game-header">
-          <span className="logo"> {<GiThink className="logo-icon"/>}  GuessIt</span> Number Guessing Game
+          <span className="logo">
+            {" "}
+            {<GiThink className="logo-icon" />} GuessIt
+          </span>{" "}
+          Number Guessing Game
         </p>
         <button
           className="new-game"
@@ -54,9 +58,7 @@ export default function GuessGameUI() {
       </header>
       <div className="game-container">
         {currentGuessState.playGameOn ? (
-          <p
-            className={currentGuessState.trials === 0 ? "no-trials" : ""}
-          >
+          <p className={currentGuessState.trials === 0 ? "no-trials" : ""}>
             {currentGuessState.trials} Trials Remaining
           </p>
         ) : (
@@ -72,7 +74,15 @@ export default function GuessGameUI() {
           placeholder="Enter your guess number"
           onChange={handleGuessInput}
         />
-        <p className={currentGuessState.win ? "trials" : currentGuessState.trials === 0? "no-trials" : ""}>
+        <p
+          className={
+            currentGuessState.win
+              ? "trials"
+              : currentGuessState.trials === 0
+                ? "no-trials"
+                : ""
+          }
+        >
           {currentGuessState.gameStatus}
         </p>
         <button

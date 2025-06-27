@@ -6,7 +6,7 @@ export type GuessState = {
   gameStatus: string;
   secretNumber: number;
   playGameOn: boolean;
-  win?: boolean
+  win?: boolean;
 };
 
 type ReducerAction = {
@@ -45,7 +45,8 @@ export function guessReducer(
         if (action.payload === previousGuessState.secretNumber)
           return {
             ...previousGuessState,
-            playGameOn: false, win: true,
+            playGameOn: false,
+            win: true,
             gameStatus: `Victory🏆: Your score is ${previousGuessState.trials * 10}%`,
           };
         if (action.payload! < previousGuessState.secretNumber)
@@ -63,7 +64,8 @@ export function guessReducer(
       } else
         return {
           ...previousGuessState,
-          playGameOn: false, win: false,
+          playGameOn: false,
+          win: false,
           userGuess: "",
           gameStatus: `Failure😓: You ran out of Trials. Secret Number was: ${previousGuessState.secretNumber}`,
         };
