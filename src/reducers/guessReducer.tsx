@@ -63,7 +63,7 @@ export function guessReducer(
       } else
         return {
           ...previousGuessState,
-          playGameOn: false,
+          playGameOn: false, win: false,
           userGuess: "",
           gameStatus: `Failure😓: You ran out of Trials. Secret Number was: ${previousGuessState.secretNumber}`,
         };

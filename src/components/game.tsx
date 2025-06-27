@@ -72,7 +72,7 @@ export default function GuessGameUI() {
           placeholder="Enter your guess number"
           onChange={handleGuessInput}
         />
-        <p className={currentGuessState.win ? "trials" : ""}>
+        <p className={currentGuessState.win ? "trials" : currentGuessState.trials === 0? "no-trials" : ""}>
           {currentGuessState.gameStatus}
         </p>
         <button
