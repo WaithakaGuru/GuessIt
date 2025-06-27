@@ -33,6 +33,7 @@ export function guessReducer(
         playGameOn: true,
         secretNumber: generateRandomValue(),
         trials: 10,
+        win: false,
         userGuess: "",
         gameStatus: "Secret Number generated!! Enter your guess to play🫡",
       };
